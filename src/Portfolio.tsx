@@ -1444,7 +1444,7 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: sIdx * 0.1 }}
-                className="p-6 rounded-2xl glassmorphism-card border border-[var(--color-border)] group hover:border-[var(--color-primary)]/40 hover:shadow-lg hover:shadow-[var(--color-glow)] transition-all duration-300 flex flex-col justify-between"
+                className="p-6 rounded-2xl glassmorphism-card border border-[var(--color-border)] group card-hover-effect flex flex-col justify-between"
               >
                 <div className="space-y-4">
                   <div className={`p-3 w-fit rounded-xl bg-gradient-to-br ${serv.color} text-white shadow-sm`}>

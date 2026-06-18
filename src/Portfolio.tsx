@@ -947,7 +947,7 @@ export default function Portfolio() {
             >
               <MagneticButton>
                 <a
-                  href="/Resume 1.pdf"
+                  href="./Resume 1.pdf"
                   download
                   className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full text-xs font-mono tracking-widest font-bold bg-[var(--color-text)] text-[var(--color-bg)] hover:opacity-90 transition-all shadow-md"
                 >

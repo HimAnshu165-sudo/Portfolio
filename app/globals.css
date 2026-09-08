@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #070709;
+  --fg: #f4f4f5;
+  --muted: #71717a;
+  --accent: #f59e0b;
+  --accent-glow: rgba(245, 158, 11, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #070709;
+  color: #f4f4f5;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: auto;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #070709;
+  color: #f4f4f5;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  cursor: default;
+}
+
+/* Hide scrollbars for ultra-clean cinematic view while keeping scrolling functional */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #070709;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
+}
+
+/* Custom Selection */
+::selection {
+  background: #f59e0b;
+  color: #070709;
+}
+
+/* Grain texture overlay */
+.bg-grain {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Film noise effect */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background: repeating-radial-gradient(#000 0 0.0001%, #fff 0 0.0002%) 50% 0/2500px 2500px,
+    repeating-conic-gradient(#000 0 0.0001%, #fff 0 0.0002%) 50% 50%/2500px 2500px;
+}
+
+/* Fluid typography clamp utilities */
+.text-hero-huge {
+  font-size: clamp(3.5rem, 14vw, 15rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+}
+
+.text-editorial-large {
+  font-size: clamp(2rem, 6.5vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.text-editorial-md {
+  font-size: clamp(1.5rem, 3.5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* Mask animations */
+.clip-reveal-hidden {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+
+.clip-reveal-visible {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Subtle glowing accent line */
+.accent-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(245, 158, 11, 0.6) 50%, transparent 100%);
+}
+
+/* Screen distortion pulse */
+@keyframes recoil {
+  0% { transform: scale(1) translate(0, 0); }
+  20% { transform: scale(1.04) translate(-4px, 3px); filter: contrast(1.2) brightness(1.3); }
+  50% { transform: scale(0.99) translate(2px, -2px); }
+  100% { transform: scale(1) translate(0, 0); filter: contrast(1) brightness(1); }
+}
+
+.animate-recoil {
+  animation: recoil 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}

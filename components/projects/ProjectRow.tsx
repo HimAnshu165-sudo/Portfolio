@@ -49,12 +49,12 @@ export function ProjectRow({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onClick={handleRowClick}
-      className={`group relative w-full border-b border-white/10 cursor-pointer overflow-hidden transition-colors duration-500 select-none ${
+      className={`group relative w-full border-b border-zinc-200/90 cursor-pointer overflow-hidden transition-all duration-500 select-none ${
         isExpanded
-          ? "bg-surface-raised/90 py-8 md:py-12 border-accent/40 shadow-2xl"
-          : "bg-transparent py-6 md:py-8 hover:border-white/20"
+          ? "bg-white py-8 md:py-12 border-amber-500/40 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.1)] rounded-2xl mx-0 my-3"
+          : "bg-transparent py-6 md:py-8 hover:bg-zinc-100/60 hover:border-zinc-300"
       } ${
-        isHoveredByParent && !isSelfHovered ? "opacity-35 blur-[0.5px]" : "opacity-100"
+        isHoveredByParent && !isSelfHovered ? "opacity-40 blur-[0.3px]" : "opacity-100"
       }`}
     >
       {/* Background glow when expanded */}
@@ -64,7 +64,7 @@ export function ProjectRow({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute inset-0 pointer-events-none bg-gradient-to-r from-accent/5 via-transparent to-accent/5"
+          className="absolute inset-0 pointer-events-none bg-gradient-to-r from-amber-500/5 via-transparent to-amber-500/5"
         />
       )}
 
@@ -75,7 +75,7 @@ export function ProjectRow({
           <div className="flex items-baseline gap-6 md:gap-12">
             <span
               className={`font-mono text-sm md:text-base transition-colors duration-300 ${
-                isExpanded ? "text-accent font-bold" : "text-muted"
+                isExpanded ? "text-amber-700 font-extrabold" : "text-zinc-400 font-bold group-hover:text-zinc-600"
               }`}
             >
               {project.index}
@@ -85,8 +85,8 @@ export function ProjectRow({
               layout="position"
               className={`font-display font-extrabold uppercase tracking-tight transition-all duration-300 ${
                 isExpanded
-                  ? "text-3xl md:text-5xl lg:text-6xl text-white translate-x-2"
-                  : "text-2xl md:text-4xl lg:text-5xl text-zinc-300 group-hover:text-white"
+                  ? "text-3xl md:text-5xl lg:text-6xl text-black translate-x-2"
+                  : "text-2xl md:text-4xl lg:text-5xl text-zinc-800 group-hover:text-black"
               }`}
             >
               {project.title}
@@ -95,11 +95,11 @@ export function ProjectRow({
 
           {/* Right Category, Year & Arrow */}
           <div className="flex items-center gap-6 md:gap-12">
-            <span className="hidden md:inline font-mono text-xs text-muted uppercase tracking-widest">
+            <span className="hidden md:inline font-mono text-xs text-zinc-500 uppercase tracking-widest font-medium">
               {project.category}
             </span>
 
-            <span className="hidden sm:inline font-mono text-xs text-zinc-500">
+            <span className="hidden sm:inline font-mono text-xs text-zinc-400 font-semibold">
               {project.year}
             </span>
 
@@ -107,13 +107,13 @@ export function ProjectRow({
             <motion.div
               animate={{
                 rotate: isExpanded ? 45 : 0,
-                scale: isExpanded ? 1.25 : 1,
+                scale: isExpanded ? 1.15 : 1,
               }}
               transition={{ type: "spring", stiffness: 350, damping: 20 }}
-              className={`w-10 h-10 rounded-full flex items-center justify-center border transition-colors ${
+              className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 shadow-sm ${
                 isExpanded
-                  ? "border-accent bg-accent text-background"
-                  : "border-white/10 text-zinc-400 group-hover:border-white/30 group-hover:text-white"
+                  ? "border-amber-500 bg-amber-500 text-black font-bold"
+                  : "border-zinc-300 bg-white text-zinc-700 group-hover:border-zinc-900 group-hover:bg-zinc-900 group-hover:text-white"
               }`}
             >
               <ArrowUpRight className="w-5 h-5" />
@@ -141,29 +141,29 @@ export function ProjectRow({
                 y: 10,
                 transition: { duration: 0.25 },
               }}
-              className="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+              className="mt-8 pt-6 border-t border-zinc-200 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             >
               {/* Left Column: Description & Metadata */}
               <div className="lg:col-span-5 space-y-6">
                 <div className="space-y-2">
-                  <span className="text-[11px] font-mono tracking-widest text-accent uppercase">
+                  <span className="text-[11px] font-mono tracking-widest text-amber-700 font-bold uppercase">
                     Architecture & Execution
                   </span>
-                  <p className="text-sm md:text-base text-zinc-300 font-sans leading-relaxed">
+                  <p className="text-sm md:text-base text-zinc-700 font-sans leading-relaxed font-normal">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Tech Stack Pills */}
                 <div className="space-y-2">
-                  <span className="text-[10px] font-mono tracking-wider text-muted uppercase">
+                  <span className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase font-semibold">
                     Core Technologies
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="text-xs font-mono px-2.5 py-1 rounded bg-white/5 border border-white/10 text-zinc-300"
+                        className="text-xs font-mono px-2.5 py-1 rounded bg-zinc-100 border border-zinc-200 text-zinc-800 font-medium"
                       >
                         {tech}
                       </span>
@@ -173,7 +173,7 @@ export function ProjectRow({
 
                 {/* Action Link button */}
                 <div className="pt-2">
-                  <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-background font-mono text-xs font-bold uppercase tracking-wider hover:bg-white transition-colors shadow-lg">
+                  <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-900 text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-amber-500 hover:text-black transition-colors shadow-md">
                     <span>EXPLORE LIVE PLATFORM</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </span>

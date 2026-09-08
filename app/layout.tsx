@@ -1,23 +1,30 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Syne, Unbounded, Plus_Jakarta_Sans, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { PROFILE } from "@/data/profile";
 
-const inter = Inter({
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-syne",
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const unbounded = Unbounded({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-unbounded",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
+  variable: "--font-plus-jakarta",
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-mono",
   display: "swap",
 });
 
@@ -69,7 +76,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} dark`}
+      className={`${unbounded.variable} ${syne.variable} ${plusJakartaSans.variable} ${spaceMono.variable} dark`}
     >
       <body className="bg-background text-foreground antialiased selection:bg-accent selection:text-background min-h-screen">
         <div className="noise-overlay" aria-hidden="true" />

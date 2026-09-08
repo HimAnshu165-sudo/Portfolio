@@ -30,9 +30,12 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "-apple-system", "sans-serif"],
-        display: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "monospace"],
+        sans: ["var(--font-plus-jakarta)", "Cabinet Grotesk", "system-ui", "-apple-system", "sans-serif"],
+        display: ["var(--font-syne)", "var(--font-unbounded)", "Clash Display", "sans-serif"],
+        unbounded: ["var(--font-unbounded)", "sans-serif"],
+        syne: ["var(--font-syne)", "sans-serif"],
+        clash: ["Clash Display", "var(--font-syne)", "sans-serif"],
+        mono: ["var(--font-space-mono)", "ui-monospace", "monospace"],
       },
       animation: {
         "pulse-subtle": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",

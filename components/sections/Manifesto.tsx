@@ -1,21 +1,14 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { canvasStore } from "@/lib/canvas-state";
 
 export function Manifesto() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { once: false, margin: "-20% 0px -20% 0px" });
-
-  useEffect(() => {
-    if (isInView) {
-      canvasStore.setActiveSection("manifesto");
-    }
-  }, [isInView]);
+  const isInView = useInView(containerRef, { once: false, margin: "-15% 0px -15% 0px" });
 
   const lineVariants = {
-    hidden: { opacity: 0, y: 35, filter: "blur(6px)" },
+    hidden: { opacity: 0, y: 40, filter: "blur(8px)" },
     visible: (custom: number) => ({
       opacity: 1,
       y: 0,
@@ -32,25 +25,23 @@ export function Manifesto() {
     <section
       ref={containerRef}
       id="manifesto"
-      className="relative w-full py-32 md:py-48 px-6 md:px-16 lg:px-24 bg-[#fbfbfd] text-[#1d1d1f] z-20 flex flex-col justify-center transition-colors duration-700 shadow-sm"
+      className="relative w-full py-32 md:py-48 px-6 md:px-16 lg:px-24 bg-background z-20 flex flex-col justify-center"
     >
       <div className="max-w-6xl mx-auto w-full space-y-12">
-        {/* Subtle section identifier with Apple pill badge */}
+        {/* Subtle section identifier */}
         <motion.div
           custom={0}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={lineVariants}
-          className="font-mono text-xs tracking-widest text-amber-700 flex items-center gap-3 uppercase"
+          className="font-mono text-xs tracking-widest text-accent flex items-center gap-3 uppercase"
         >
-          <span className="px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 font-bold">
-            01
-          </span>
-          <span className="w-8 h-[1px] bg-amber-600/40" />
-          <span className="font-semibold tracking-wider">POSITIONING & MANIFESTO</span>
+          <span>01</span>
+          <span className="w-8 h-[1px] bg-accent/40" />
+          <span>POSITIONING & MANIFESTO</span>
         </motion.div>
 
-        {/* Large Editorial Headline Sequence (Apple Style High-Contrast) */}
+        {/* Large Editorial Headline Sequence */}
         <div className="space-y-4 md:space-y-6">
           <div className="overflow-hidden">
             <motion.h2
@@ -70,7 +61,7 @@ export function Manifesto() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               variants={lineVariants}
-              className="font-display font-black text-editorial-large text-[#1d1d1f] uppercase tracking-tight"
+              className="font-display font-black text-editorial-large text-white uppercase tracking-tight"
             >
               BUT I DON&apos;T BUILD BORING WEBSITES.
             </motion.h2>
@@ -82,7 +73,7 @@ export function Manifesto() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               variants={lineVariants}
-              className="font-display font-bold text-2xl md:text-5xl text-amber-600 tracking-wide uppercase"
+              className="font-display font-semibold text-2xl md:text-5xl text-accent tracking-wide uppercase"
             >
               CODE. DESIGN. MOTION.
             </motion.h3>
@@ -95,13 +86,13 @@ export function Manifesto() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           variants={lineVariants}
-          className="pt-8 border-t border-zinc-200 max-w-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+          className="pt-6 border-t border-white/10 max-w-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
         >
-          <p className="text-base md:text-lg text-zinc-600 font-sans font-normal leading-relaxed">
+          <p className="text-sm md:text-base text-muted-light font-sans font-light leading-relaxed">
             Full-stack development meets visual design and creative interaction. Every project is engineered to perform, captivate, and convert.
           </p>
 
-          <div className="font-mono text-xs font-semibold text-zinc-400 whitespace-nowrap tracking-wider">
+          <div className="font-mono text-xs text-muted whitespace-nowrap">
             [ NEXT → SELECTED WORK ]
           </div>
         </motion.div>
